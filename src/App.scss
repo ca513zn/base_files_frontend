@@ -1,13 +1,102 @@
-.body {
-  background-color: red;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 $header-bg-color: skyblue;
+$gray: #e1e1e1;
+$lesson-block-bg: white;
 
-#root {
-  background-color: darken($color: $header-bg-color, $amount: 50);
+.App {
+  background-color: lightblue;
+  width: 100%;
   height: 100vh;
+  box-sizing: border-box;
 }
+
+.Lessons {
+  &-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  
+  &-list {
+    background-color: $gray;
+    overflow-y: scroll;
+    width: 100%;
+    height: 95%;
+    margin: 10px;
+    border-radius: 8px;
+  }
+  
+  &-description {
+    margin: 10px;
+    border-radius: 8px;
+    width: 100%;
+    height: 95%;
+    background-color: $gray;
+  }
+
+  &-block {
+    // background-color: darken($color: $gray, $amount: 5);
+    background-color: darken($color: $lesson-block-bg, $amount: 5);
+
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.25);
+    margin: 5px;
+    padding: 10px;
+    transition: ease-in-out;
+
+    &:hover {
+      background-color: $lesson-block-bg;
+    }
+
+    &-title {
+      font-size: large;
+    }
+    &-footer {
+      margin-top: 5px;
+      display: flex;
+      justify-content: space-evenly;
+    }
+    &-icon {
+      width: 35px;
+    }
+  }
+}
+
+.wrapper {
+  padding: 25px;
+  height: 90%;
+}
+
+.backpage {
+  border-radius: 8px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.75);
+  background-color: lighten($color: $header-bg-color, $amount: 40);
+  overflow: hidden;
+}
+
+.page-title {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.DigitalDash {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
 
 .header {
   background-color: $header-bg-color;
@@ -39,38 +128,40 @@ $header-bg-color: skyblue;
   flex-direction: column;
   background-color: white;
   border-radius: 10px;
-  box-shadow: -10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: -10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   padding: 25px;
-  & > form {
+
+  &>form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    & > input {
+
+    &>input {
       width: 100%;
       height: 25px;
       margin-top: 10px;
       border-top: none;
       border-left: none;
       border-right: none;
-      border-bottom: 1px solid #5e5e5e;
+      border-bottom: 1px solid;
     }
-    & > button {
+
+    &>button {
       margin-top: 20px;
       padding: 15px;
       width: 150px;
-      box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.1);
+      box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.1);
       border: none;
       background-color: lighten($color: $header-bg-color, $amount: 5);
     }
   }
 }
 
-@media(max-width: 720px){
-  .login{
+@media(max-width: 720px) {
+  .login {
     width: 75vw;
   }
 }
-
