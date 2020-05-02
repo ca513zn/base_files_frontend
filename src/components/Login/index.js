@@ -1,25 +1,22 @@
 import React, { useState } from "react";
-const axios = require("axios");
+import { connect } from "react-redux";
+import { login } from "../../store/reducers/auth";
 
-const Login = () => {
+const Login = (props) => {
+  let { login } = props;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [attempts, setAttempts] = useState(0);
-
   const handleLogin = async (event) => {
-    setAttempts(attempts + 1);
     event.preventDefault();
     try {
-      const response = await axios.get(
-        "http://localhost:3333/auth/login?username=" +
-          username +
-          "&password=" +
-          password
-      );
-      !response.data.result && alert("u gay");
-      console.log(response);
-    } catch (error) {
-      console.error(error);
+      login({
+        username: username,
+        password: password,
+      });
+      setAttempts(attempts + 1);
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -32,12 +29,14 @@ const Login = () => {
             <input
               type="text"
               placeholder="Enter your username..."
+              autoComplete="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <input
               type="password"
               placeholder="Enter your password ass..."
+              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -52,4 +51,16 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.Auth.loggedIn,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (params) => dispatch(login(params)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

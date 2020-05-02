@@ -1,22 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-
+import React from "react";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import MyNavBar from "./components/NavBar";
+import Login from "./components/Login";
+import LessonsCreate from "./components/Lessons/Create";
+import MiniSafari from "./components/Activity-Preview/index";
+import Home from "./components/Home";
 
 import "./styles/app.css";
+import "./App.scss";
 
-const App = () => {
+const App = (props) => {
+  let {loggedIn} = props
   return (
     <div>
       <Router>
         <MyNavBar />
-        Hey
+        <Route path="/" exact component={Home} />
+        {!loggedIn && <Route path="/login" exact component={Login} />}
+        {/* {loggedIn && <Redirect from="/login" to="/" />} */}
+        <Route path="/lessons/create" exact component={LessonsCreate} />
+        <Route path="/preview" exact component={MiniSafari} />
       </Router>
     </div>
   );
 };
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.Auth.loggedIn,
+  };
+};
+
+export default connect(mapStateToProps)(App);
+
 
 // import "./App.scss";
 // import React from "react";

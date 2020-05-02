@@ -63,10 +63,23 @@ const Lessons = () => {
     return lessonsArray;
   };
   return (
-    <div className="Lessons-wrapper">
-      <div className="Lessons-list">{renderLessons()}</div>
-      <div className="Lessons-description">Section 2</div>
-    </div>
+    <>
+      <div class="flex flex-wrap bg-gray-200 w-full h-full">
+        <div class="w-full text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
+          New activity
+        </div>
+        <div class="w-full text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
+          My activities
+        </div>
+        <div class="w-full text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
+          Significantly larger amount of content
+        </div>
+      </div>
+    </>
+    // <div className="Lessons-wrapper">
+    //   <div className="Lessons-list">{renderLessons()}</div>
+    //   <div className="Lessons-description">Section 2</div>
+    // </div>
   );
 };
 

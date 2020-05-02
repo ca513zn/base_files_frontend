@@ -1,15 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import LoggedInHome from './LoggedIn'
-const Home = (props) => {
-  let { loggedIn } = props;
 
+const LoggedInHome = (props) => {
+  let { user } = props;
   return (
     <>
-    {loggedIn && <LoggedInHome />}
-    {!loggedIn && <div>Hello !</div>}
+    
     </>
-  )
+  );
 };
 
 const mapStateToProps = (state) => {
@@ -23,4 +21,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(LoggedInHome);
